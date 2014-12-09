@@ -16,6 +16,30 @@ def englishNumber number
 				 "sixteen", "seventeen", "eightteen", "nineteen"]
 
 	left = number
+	write = left/1000000000000
+	left = left - write*1000000000000
+
+	if write > 0
+		trillion = englishNumber write
+		numString = numString + trillion + " trillion"
+
+		if left > 0
+			numString = numString + " "
+		end
+	end
+
+	write = left/1000000000
+	left = left - write*1000000000
+
+	if write > 0
+		billions = englishNumber write
+		numString = numString + billions + " billion"
+
+		if left > 0
+			numString = numString + " "
+		end
+	end
+
 	write = left/1000000
 	left = left - write*1000000
 
@@ -78,6 +102,6 @@ def englishNumber number
 	numString
 end
 
-puts englishNumber(1700001)
-puts englishNumber(1240)
-puts englishNumber(34)
+puts "What number would you like me to write?"
+your_number = gets.chomp
+puts englishNumber(your_number.to_i)
